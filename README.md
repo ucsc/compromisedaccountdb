@@ -50,7 +50,7 @@ Current release only supports Python 2.7 . Support for Python 3 may be available
 
 ```
 ~ cd to desired directory
-~ git clone https://github.com/jkung2314/Validation
+~ git clone https://github.com/ucsc/compromisedaccountdb.git
 ```
 
 ### Setup
