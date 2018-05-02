@@ -94,12 +94,9 @@ Fields to be edited, NOTE: ALL FIELDS ARE STRINGS
     dumpName = None #Insert name of password dump, else: keep as 'None'
     
   Special Cases:
-    1. If text file contains usernames only WITH a domain:
-         matchPassword = 'false'
-    2. If text file contains usernames only WITHOUT a domain:
+    1. If text file contains usernames WITHOUT a domain:
          noEmailFormat = 'true'
-         matchPassword = 'false'
-    3. To load in data to database only:
+    2. To load in data to database only:
          dataOnly = 'true'
 ```
 
