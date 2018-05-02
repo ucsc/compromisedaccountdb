@@ -133,6 +133,8 @@ if fileName is not None and username is None:
                 domain = domain[0]
             elif matchPassword == "false":
                 password = None
+                domain = user.split("@")
+                domain = domain[1]
             else:
                 errorList.append("(email:password) formatted incorrectly in line " + str(lineCount) + ", username: " + username)
                 continue
