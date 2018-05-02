@@ -33,8 +33,7 @@ fileType = settings.fileType
 dataOnly = settings.dataOnly
 dateAdded = settings.dateAdded
 dumpName = settings.dumpName
-showData = settings.showData #
-matchPassword = settings.matchPassword
+showData = settings.showData
 fileName = settings.fileName
 noEmailFormat = settings.noEmailFormat
 showOnlyInDir = settings.showOnlyInDir
@@ -101,7 +100,6 @@ def done():
 
 #If file given
 lineCount = 0
-errorList = []
 if fileName is not None and username is None:
     if fileType == "xlsx":
         try:
@@ -131,13 +129,10 @@ if fileName is not None and username is None:
                 domain = user.split("@")
                 domain = domain[1].split(":")
                 domain = domain[0]
-            elif matchPassword == "false":
+            else:
                 password = None
                 domain = user.split("@")
                 domain = domain[1]
-            else:
-                errorList.append("(email:password) formatted incorrectly in line " + str(lineCount) + ", username: " + username)
-                continue
             if inDatabase(username, password, showData) == False:
                 database.insert(username, password, domain, current_time, dumpName, dateAdded)
                 if showData == "false":
@@ -152,9 +147,6 @@ if fileName is not None and username is None:
                     print (username + " LOCATED in database, ignoring...")
             progress.update(lineCount)
             print ("\n")
-    if errorList is not None:
-        for error in errorList:
-            print error
     done()
 
 #If username given
@@ -162,11 +154,13 @@ if username is not None:
     if noEmailFormat != "true":
         if str(username).find("@") > 0:
             username = username[0:str(username).find("@")]
+            domain = user.split("@")
+            domain = domain[1]
     else:
         username = username
+        domain = None
     password = None
     if inDatabase(username, password, showData) == False:
-        domain = None
         database.insert(username, password, domain, current_time, dumpName, dateAdded)
         if showData == "false":
             print (username + " NOT in database, sending to LDAP...")

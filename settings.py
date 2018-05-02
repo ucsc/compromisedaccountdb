@@ -4,7 +4,6 @@ dataOnly = None #Set to true if you only want to add to database, and not send t
 dateAdded = None #Date of dump.
 dumpName = None #Name of password dump.
 showData = None #Set value to 'false' to print values not found in database and 'true' to print values found in database.
-matchPassword = None #If your file does not contain a password set this to 'false'.
 fileName = None #A file containing one username per line. uid direct match search only.
 noEmailFormat = None #Set value to true if usernames do not contain @ symbol or domain.
 showOnlyInDir = None #Set value to true to hide output lines for users not in the directory.
